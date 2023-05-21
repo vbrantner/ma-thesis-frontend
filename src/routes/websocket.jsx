@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useInterval } from "../utils";
 
 export default function WebsocketPage() {
   const [imageData, setImageData] = useState("");
+  const [messageCount, setMessageCount] = useState(0);
+  const [rps, setRps] = useState(0);
+  const lastUpdateTime = useRef(Date.now());
 
   useEffect(() => {
     const socket = new WebSocket("ws://192.168.178.76:8000");
@@ -11,6 +15,7 @@ export default function WebsocketPage() {
     };
 
     socket.onmessage = (event) => {
+      setMessageCount((prevCount) => prevCount + 1);
       setImageData(event.data);
     };
 
@@ -24,14 +29,29 @@ export default function WebsocketPage() {
     };
   }, []);
 
+  useInterval(() => {
+    const currentTime = Date.now();
+    const timeDiff = (currentTime - lastUpdateTime.current) / 1000;
+    console.log(timeDiff);
+    const currentRps = messageCount / timeDiff;
+    setRps(currentRps);
+    setMessageCount(0);
+    lastUpdateTime.current = currentTime;
+  }, 1000);
+
   return (
     <div>
       <h1 className="text-2xl">Websocket</h1>
-      <img
-        className="border-2 border-red-500"
-        src={`data:image/jpeg;base64, ${imageData}`}
-        alt="Received Image"
-      />
+      <div className="relative">
+        <p className="text-yellow-500 text-xl font-bold absolute top-2 left-2">
+          {rps}
+        </p>
+        <img
+          className="border-2 border-red-500"
+          src={`data:image/jpeg;base64, ${imageData}`}
+          alt="Received Image"
+        />
+      </div>
     </div>
   );
 }
