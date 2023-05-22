@@ -8,7 +8,7 @@ export default function WebsocketPage() {
   const lastUpdateTime = useRef(Date.now());
 
   useEffect(() => {
-    const socket = new WebSocket("ws://192.168.178.76:8000");
+    const socket = new WebSocket("ws://localhost:8000");
 
     socket.onopen = () => {
       console.log("WebSocket connection established");
@@ -42,7 +42,7 @@ export default function WebsocketPage() {
   return (
     <div>
       <h1 className="text-2xl">Websocket</h1>
-      <div className="relative">
+      <div className="relative w-1/2 h-96">
         <p className="text-yellow-500 text-xl font-bold absolute top-2 left-2">
           {rps}
         </p>
