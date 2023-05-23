@@ -9,6 +9,10 @@ const routes = [
     href: "/yield-to-img-tag",
     name: "Yield to Image tag",
   },
+  {
+    href: "/webrtc",
+    name: "WebRTC",
+  },
 ];
 
 export default function Root() {
