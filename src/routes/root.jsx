@@ -13,6 +13,10 @@ const routes = [
     href: "/webrtc",
     name: "WebRTC",
   },
+  {
+    href: "/websocket-node",
+    name: "Websocket Node",
+  },
 ];
 
 export default function Root() {

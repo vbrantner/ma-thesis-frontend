@@ -6,6 +6,7 @@ import Root from "./routes/root";
 import WebsocketPage from "./routes/websocket";
 import YieldToImgTagPage from "./routes/yield-to-img-tag";
 import WebRTCPage from "./routes/webrtc_main";
+import WebsocketNodePage from "./routes/websocket-node";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/webrtc",
         element: <WebRTCPage />,
+      },
+      {
+        path: "/websocket-node",
+        element: <WebsocketNodePage />,
       },
     ],
   },

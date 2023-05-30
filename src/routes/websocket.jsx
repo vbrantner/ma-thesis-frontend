@@ -7,9 +7,13 @@ export default function WebsocketPage() {
   const [rps, setRps] = useState(0);
   const lastUpdateTime = useRef(Date.now());
   const [delay, setDelay] = useState();
+  const [timestampBackend, setTimestampBackend] = useState();
+  const timestamp = new Date();
+  // make timestamp 10 seconds later
+  const oldTimestamp = new Date();
 
   useEffect(() => {
-    const socket = new WebSocket("ws://192.168.178.51:8000");
+    const socket = new WebSocket("ws://172.20.10.2:8000");
 
     socket.onopen = () => {
       console.log("WebSocket connection established");
@@ -19,11 +23,10 @@ export default function WebsocketPage() {
       setMessageCount((prevCount) => prevCount + 1);
       const img = event.data.split(",")[0];
       const timestamp = event.data.split(",")[1];
+      setTimestampBackend(timestamp);
       console.log(new Date(timestamp), new Date().toUTCString());
       setImageData(img);
-      setDelay(
-        new Date().getMilliseconds() - new Date(timestamp).getMilliseconds()
-      );
+      setDelay(new Date() - new Date(timestamp));
     };
 
     socket.onclose = () => {
@@ -52,9 +55,13 @@ export default function WebsocketPage() {
         <p className="text-yellow-500 text-xl font-bold absolute top-2 left-2">
           {rps}
         </p>
-        <p className="text-purple-500 text-xl font-bold absolute top-8 left-2">
-          {delay}
-        </p>
+        <div className="text-purple-500 text-xl font-bold absolute top-8 left-2">
+          <span>{delay}</span>
+          <span className="ml-2 text-emerald-500">
+            {timestampBackend && new Date(timestampBackend).toISOString()}
+          </span>
+          <span className="ml-2">{new Date().toISOString()}</span>
+        </div>
         <img
           className="border-2 border-red-500"
           src={`data:image/jpeg;base64, ${imageData}`}
