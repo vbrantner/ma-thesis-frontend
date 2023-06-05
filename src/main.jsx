@@ -7,6 +7,7 @@ import WebsocketPage from "./routes/websocket";
 import YieldToImgTagPage from "./routes/yield-to-img-tag";
 import WebRTCPage from "./routes/webrtc_main";
 import WebsocketNodePage from "./routes/websocket-node";
+import VideoHlsStreamPage from "./routes/hls-stream";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/websocket-node",
         element: <WebsocketNodePage />,
+      },
+      {
+        path: "/video-stream",
+        element: <VideoHlsStreamPage />,
       },
     ],
   },

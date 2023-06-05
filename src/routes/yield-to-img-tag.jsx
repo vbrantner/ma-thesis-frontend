@@ -5,7 +5,7 @@ export default function YieldToImgTagPage() {
     <div className="relative">
       <h1 className="text-2xl">Yield to Image tag</h1>
       <InteractiveCanvas>
-        <img className="" src={"http://localhost:3000/video_feed"} />
+        <img className="" src={"http://192.168.178.76:3000/stream"} />
       </InteractiveCanvas>
     </div>
   );
@@ -18,7 +18,7 @@ function InteractiveCanvas(props) {
   const elementRef = useRef(null);
 
   useEffect(() => {
-    const newSocket = new WebSocket("ws://localhost:8000");
+    const newSocket = new WebSocket("ws://172.20.10.2:8000");
     setSocket(newSocket);
 
     return () => {
@@ -57,7 +57,7 @@ function InteractiveCanvas(props) {
   return (
     <div
       onMouseMove={handleMouseMove}
-      className="border-2 border-blue-500 w-3/4 h-1/2 relative"
+      className="border-2 border-blue-500 md:w-1/2 md:h-1/2 relative w-full"
     >
       <div className="absolute top-0 left-0 bg-gray-50/50 p-2 rounded-md m-2 ring-1 ring-black ring-opacity-20">
         <p className="">Mouse Coordinates</p>

@@ -17,6 +17,10 @@ const routes = [
     href: "/websocket-node",
     name: "Websocket Node",
   },
+  {
+    href: "/video-stream",
+    name: "Video HLS Stream",
+  },
 ];
 
 export default function Root() {
