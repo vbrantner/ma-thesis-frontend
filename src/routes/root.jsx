@@ -6,21 +6,29 @@ const routes = [
     name: "Websocket",
   },
   {
-    href: "/yield-to-img-tag",
-    name: "Yield to Image tag",
+    href: "/single-images",
+    name: "Single Images (mixed-type, boundary)",
   },
-  {
-    href: "/webrtc",
-    name: "WebRTC",
-  },
-  {
-    href: "/websocket-node",
-    name: "Websocket Node",
-  },
-  {
-    href: "/video-stream",
-    name: "Video HLS Stream",
-  },
+  // {
+  //   href: "/webrtc",
+  //   name: "WebRTC",
+  // },
+  // {
+  //   href: "/websocket-node",
+  //   name: "Websocket Node",
+  // },
+  // {
+  //   href: "/video-stream",
+  //   name: "Video HLS Stream",
+  // },
+  // {
+  //   href: "/qrcode",
+  //   name: "QR Code Generator",
+  // },
+  // {
+  //   href: "/qrcode-detect",
+  //   name: "QR Code Detect",
+  // },
 ];
 
 export default function Root() {

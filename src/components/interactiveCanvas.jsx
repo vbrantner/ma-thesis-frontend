@@ -1,63 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function YieldToImgTagPage() {
-  // const imgRef = useRef(null);
-  // useEffect(() => {
-  //   const handleFetch = async () => {
-  //     const response = await fetch("http://192.168.2.2:3000/video_feed");
-  //     const reader = response.body.getReader();
-  //     // console log new data on the reader
-  //     const stream = new ReadableStream({
-  //       start(controller) {
-  //         // The following function handles each data chunk
-  //         function push() {
-  //           // "done" is a Boolean and value a "Uint8Array"
-  //           reader.read().then(({ done, value }) => {
-  //             // Is there no more data to read?
-  //             console.log(value);
-  //             if (done) {
-  //               // Tell the browser that we have finished sending data
-  //               controller.close();
-  //               return;
-  //             }
-
-  //             // Create a Blob from the chunk of data
-  //             const blob = new Blob([value], { type: "image/jpeg" });
-
-  //             // Create an Object URL from the Blob
-  //             const url = URL.createObjectURL(blob);
-
-  //             // Set the img element's src to the Object URL
-  //             imgRef.current.src = url;
-  //             // Get the data and send it to the browser via the controller
-  //             controller.enqueue(value);
-  //             push();
-  //           });
-  //         }
-
-  //         push();
-  //       },
-  //     });
-  //   };
-  //   handleFetch();
-  // }, []);
-
-  return (
-    <div className="relative">
-      <h1 className="text-2xl">Yield to Image tag</h1>
-      {/* <video></video> */}
-      <InteractiveCanvas>
-        <img
-          // ref={imgRef}
-          className="w-1/2"
-          src={"http://127.0.0.1:3000/video_feed"}
-        />
-      </InteractiveCanvas>
-    </div>
-  );
-}
-
-function InteractiveCanvas(props) {
+export function InteractiveCanvas(props) {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [receivedCoordinates, setReceivedCoordinates] = useState(null);
   const [socket, setSocket] = useState(null);
