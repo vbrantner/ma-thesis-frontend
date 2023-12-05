@@ -21,10 +21,10 @@ const routes = [
   //   href: "/video-stream",
   //   name: "Video HLS Stream",
   // },
-  // {
-  //   href: "/qrcode",
-  //   name: "QR Code Generator",
-  // },
+  {
+    href: "/qrcode",
+    name: "QR Code Generator",
+  },
   // {
   //   href: "/qrcode-detect",
   //   name: "QR Code Detect",

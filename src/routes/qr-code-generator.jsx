@@ -8,7 +8,7 @@ export default function QRCodeGenerator() {
 
   function startGenerator() {
     let count = 0;
-    const size = 150;
+    const size = 180;
     const positions = [
       { x: 0 * size, y: 0 * size },
       { x: 0 * size, y: 1 * size + 1 },
@@ -29,15 +29,15 @@ export default function QRCodeGenerator() {
     ];
     setInterval(() => {
       QRCode.toCanvas(canvasRef.current, Date.now().toString(), {
-        width: 150,
-        height: 150,
+        width: 175,
+        height: 175,
         errorCorrectionLevel: "H",
       });
       count++;
       const pos = count % positions.length;
       canvasRef.current.style.top = `${positions[pos].y}px`;
       canvasRef.current.style.left = `${positions[pos].x}px`;
-    }, 1000 / 30);
+    }, 1000 / 35);
   }
 
   function startBarCodeGenerator() {
@@ -48,7 +48,7 @@ export default function QRCodeGenerator() {
         height: 200,
         displayValue: true,
       });
-    }, 1000 / 60);
+    }, 1000 / 40);
   }
 
   return (
@@ -67,7 +67,11 @@ export default function QRCodeGenerator() {
           Start Barcode
         </button>
       </div>
-      <div className="relative h-[80vh] bg-white border-2 border-red-500 w-full p-10 rounded-lg">
+      <div className="relative h-[80vh] bg-white border-2 border-red-500 w-full p-15 rounded-lg">
+        <img
+          className="object-cover h-full w-full"
+          src="https://www.apricon.fi/wp-content/uploads/csm_image-processing-visionline-basic-1140x641.jpg"
+        />
         <canvas ref={canvasRef} id="canvas" className="m-5 absolute"></canvas>
         <canvas id="barcode" ref={barcodeRef} className="p-20"></canvas>
       </div>

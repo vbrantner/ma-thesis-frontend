@@ -5,6 +5,7 @@ import "./index.css";
 import Root from "./routes/root";
 import SingleImagesStreamPage from "./routes/singleImagesStream";
 import WebsocketPage from "./routes/websocket";
+import QRCodeGenerator from "./routes/qr-code-generator";
 
 const router = createBrowserRouter([
   {
@@ -31,10 +32,10 @@ const router = createBrowserRouter([
       //   path: "/video-stream",
       //   element: <VideoHlsStreamPage />,
       // },
-      // {
-      //   path: "/qrcode",
-      //   element: <QRCodeGenerator />,
-      // },
+      {
+        path: "/qrcode",
+        element: <QRCodeGenerator />,
+      },
       // {
       //   path: "/qrcode-detect",
       //   element: <QRCodeDetector />,
